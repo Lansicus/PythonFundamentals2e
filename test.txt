@@ -1,0 +1,67 @@
+Prompt the user to input an indefinite number of temperature entries ranging from -212 to 212. 
+"999" is the designated input for having no more entries.
+After the user has finished the function will print the average of all entries.
+Input parameters: 
+    - -212 to 212
+    - four characters max
+    - only digits and the '-' sign
+    - '-' sign must be leading
+    - cannot be an empty string
+
+
+    current_entry = 0
+    all_entries = []
+    print("Enter 999 when finished")
+    while True:
+        temp = input(f"Entry #{current_entry + 1}: ").strip()
+
+        if temp == "999":
+            break
+        elif 1 <= len(temp) <= 4:
+            if temp.startswith('-'):
+                temp.strip('-')
+                if temp.isdigit() and 0 <= temp <= 212:
+                    all_entries.append('-' + temp)
+                else:
+                    print('Enter a number from -212 to 212')
+            elif temp.isdigit() and 0 <= temp and <= 212:
+                all_entries.append(temp)
+            else:
+                print('Enter a number from -212 to 212')
+        else:
+            print("Enter a digit between -212 and 212")
+            
+average = avg.all_entries
+print(f"The average temperature was {average} degrees.)
+
+
+
+
+
+
+
+
+grades_list = []
+number_of_tests = 0
+
+while True:
+    number_of_tests = int(input("How many tests submitted? ")).strip()
+    if number_of_tests > 0 and < 101:
+        print("You have {number_of_tests} to grade.")
+        break
+    elif number_of_tests == -1:
+        return
+    else: print("Must enter a number from 1 to 100.)
+
+for _ in number_of_tests:
+    while true:
+        grade = int(input("Enter Grade: "))
+        if grade > 0 and < 101:
+            grades_list.append(grade)
+            break
+        elif grade == -1:
+            break
+        else Print("Must enter a number from 1 to 100.)
+
+average_grade = int(sum(grades_list) / len(grades_list))
+print(f"The class average is: {average_grade}")

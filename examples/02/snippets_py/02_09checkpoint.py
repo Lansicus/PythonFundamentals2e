@@ -2,14 +2,18 @@
 
 ### Checkpoint 1 Snippets
 
-name = 'Izabella'
+# name = 'Izabella'
 
-name.startswith('Iz')
+# name.startswith('Iz')
 
-### Checkpoint 2 Snippets
+# ### Checkpoint 2 Snippets
 
-name.endswith('la')
+# name.endswith('la')
 
+
+firstname = input('What is your first name? ');
+lastname = input('What is your last name? ');
+print('Welcome to Python, ' + firstname + ' ' + lastname + '!')
 ##########################################################################
 # (C) Copyright 1992-2026 by Deitel & Associates, Inc. and               #
 # Pearson Education, Inc. All Rights Reserved.                           #

@@ -5,15 +5,16 @@ number1 = int(input('Enter first integer: '))
 number2 = int(input('Enter second integer: '))
 number3 = int(input('Enter third integer: '))
 
-minimum = number1
+# minimum = number1
 
-if number2 < minimum:
-    minimum = number2
+# if number2 < minimum:
+#     minimum = number2
 
-if number3 < minimum:
-    minimum = number3
+# if number3 < minimum:
+#     minimum = number3
 
-print('Minimum value is', minimum)
+# print('Minimum value is', minimum)
+print('Minimum value is', min(number1, number2, number3))
 
 ##########################################################################
 # (C) Copyright 1992-2026 by Deitel & Associates, Inc. and               #
