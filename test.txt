@@ -1,3 +1,38 @@
+from enum import Enum
+
+GameStatus = Enum('GameStatus', ['WIN', 'LOSE', 'CONTINUE'])
+game_status = GameStatus.CONTINUE
+
+first_roll = r.randint(1,6) + r.randint(1,6)
+    match first_roll:
+        case 7 | 11:
+            game_status = GameStatus.WIN
+            print(f'You win with {first_roll}\n')
+        case 2 | 3 | 12:
+            game_status = GameStatus.LOSE
+            print(f'You lose with {first_roll}')
+        case _:
+            print(f'You roll {first_roll}. Roll 7 to lose or {first_roll} again to win!)
+
+while game_status == GameStatus.CONTINUE:
+    new_roll = r.randint(1,6) + r.randint(1,6)
+    match new_roll:
+        case 7:
+            game_status = GameStatus.LOSE
+            break
+        case new_roll == first_roll:
+            game_status = GameStatus.WIN
+            break
+        case _:
+        print(f'You roll {new_roll}. Keep rolling to win.)
+            continue
+
+print(f'You roll {new_roll} and lose!' if game_status == GameStatus.LOSE else f'You roll {new_roll} and win!)
+
+--------------------------------------------------------------------------------
+
+
+
 Prompt the user to input an indefinite number of temperature entries ranging from -212 to 212. 
 "999" is the designated input for having no more entries.
 After the user has finished the function will print the average of all entries.
@@ -36,7 +71,7 @@ print(f"The average temperature was {average} degrees.)
 
 
 
-
+-----------------------------------------------------------------------------
 
 
 

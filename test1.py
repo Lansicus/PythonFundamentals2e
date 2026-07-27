@@ -2,35 +2,76 @@ import statistics as stat
 from decimal import Decimal
 from typing import List, Optional
 import random as r
+from enum import Enum
 
 
+def play_craps() -> None:
+    GameStatus = Enum('GameStatus', ['WIN', 'LOSE', 'CONTINUE'])
+    input('Press enter to roll.')
+    first_roll = r.randint(1,6) + r.randint(1,6)
+    match first_roll:
+        case 7 | 11:
+            GameStatus.WIN
+            print(f'You win with {first_roll}')
+            last_roll = first_roll
+        case 2 | 3 | 12:
+            GameStatus.LOSE
+            print(f'You lose with {first_roll}')
+            last_roll = first_roll
+        case _:
+            GameStatus.CONTINUE
+            print(f'You roll {first_roll},\n roll 7 to lose or {first_roll} again to win!')
 
-'''Casino Game called Craps'''
-points = 0
-dice_roll = r.randint(1,6) + r.randint(1,6)
-
-print(f'Roll the dice for a chance to win')
-input()
-if dice_roll in (7, 11):
-    print(f"You rolled {dice_roll}")
-    print(f"You win with {dice_roll} points!\n")
-elif dice_roll in (2, 3, 12):
-    print(f"You lost with a {dice_roll}.\nBetter luck next time!\n")
-else:
-    print(f"You rolled a {dice_roll}.\nRoll {dice_roll} again to win! ")
     input()
-    while True:
+    while GameStatus.CONTINUE:
         new_roll = r.randint(1,6) + r.randint(1,6)
-        if new_roll == 7:
-            print(f"You lost with a {dice_roll}.\nBetter luck next time!\n")
-            break
-        else:
-            print(f'You got {new_roll}\n')
-            input()
-            continue
-            
+        match new_roll:
+            case 7:
+                last_roll = new_roll
+                GameStatus.LOSE
+                break
+            case _ if new_roll == first_roll:
+                last_roll = new_roll
+                GameStatus.WIN
+                break            
+            case _:
+                input(f'You roll {new_roll}. Keep rolling to win.')
+                continue
+
+    if GameStatus.LOSE:
+        print(f'You roll {last_roll} and lose!')
+    elif GameStatus.WIN:
+        print(f'You roll {last_roll} and win!')
 
 
+
+
+# #'''Casino Game called Craps. Part 1'''
+# points = 0
+# dice_roll = r.randint(1,6) + r.randint(1,6)
+
+# print(f'Roll the dice for a chance to win')
+# input()
+# if dice_roll in (7, 11):
+#     print(f"You rolled {dice_roll}")
+#     print(f"You win!\n")
+# elif dice_roll in (2, 3, 12):
+#     print(f"You lost with {dice_roll}.\nBetter luck next time!\n")
+# else:
+#     print(f"Your first roll is {dice_roll}.\nRoll 7 to lose or {dice_roll} again to win! ")
+#     input()
+#     while True:
+#         new_roll = r.randint(1,6) + r.randint(1,6)
+#         if new_roll == 7:
+#             print(f"You rolled 7.\nBetter luck next time!\n")
+#             break
+#         elif new_roll == dice_roll:
+#             print(f'Your rolled {dice_roll}. YOU WIN!\n')
+#             break
+#         else:
+#             print(f'You rolled {new_roll}\n')
+#             input()
+#             continue
 # ------------------------------------------------------------------------------------------------------------
 
 # Hs = 0
@@ -244,5 +285,6 @@ if __name__ == '__main__':
 #     grade_average()
     # temp_average()
     # stats_function()
+    play_craps()
     pass
             
