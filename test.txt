@@ -1,3 +1,25 @@
+def date_time():
+    input_prompts = ['month: ', 'date: ', year: ', 'hour: ', 'minute: ', 'AM/PM: '])
+    for x in input_prompts:
+        filled_prompts = []
+        filled_prompts.append(input(x).strip())
+        return filled_prompts
+    now = dt.datetime.now()
+    birth_dt = dt.datetime.strptime(filled_prompts)
+    age_delta = now - birth_dt
+    age_delta1 = Enum('age_delta1', ['%A', '%b %d', '%Y', '%I:%M %p'])
+        for x in age_delta1
+        print(f'{age_delta1.strftime(x)}.\n')
+----------------------------------------------------------
+
+
+def product(*args):
+    result = 1
+    for arg in args
+        result *= arg
+    print(result, end=' ')
+
+
 from enum import Enum
 
 GameStatus = Enum('GameStatus', ['WIN', 'LOSE', 'CONTINUE'])
